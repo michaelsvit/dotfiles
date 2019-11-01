@@ -397,7 +397,7 @@ schemes:
       cyan:    '0x56b6c2'
       white:   '0xffffff'
 
-colors: *dracula
+colors: *solarized
 
 # Visual Bell
 #
