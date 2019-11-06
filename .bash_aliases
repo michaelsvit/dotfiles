@@ -20,6 +20,7 @@ alias grep="grep --color=auto"
 alias journalctl="journalctl -e"
 alias vi=nvim
 alias vim=nvim
+alias tmux="tmux -u"
 alias cat=bat
 alias find=fd
 alias dbx=dropbox-cli
