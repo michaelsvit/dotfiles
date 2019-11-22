@@ -13,9 +13,9 @@ esac
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
 alias u='cd ..'
-alias l=ls
-alias ll="ls -l"
-alias la="ls -la"
+alias l="ls -h"
+alias ll="l -l"
+alias la="ll -a"
 alias grep="grep --color=auto"
 alias journalctl="journalctl -e"
 alias vi=nvim
