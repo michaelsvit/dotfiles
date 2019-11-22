@@ -14,3 +14,4 @@ PS1='[\u@\h \W]\$ '
 export XDG_CONFIG_HOME=~/.config
 
 eval "$(fasd --init auto)"
+eval "$(thefuck --alias)"

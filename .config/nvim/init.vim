@@ -139,6 +139,8 @@ let test#strategy = "neovim"
 let g:test#javascript#ava#file_pattern = '\v.*\.(test|spec).(js|jsx|coffee)$'
 
 inoremap jj <ESC>
+inoremap jk <ESC>A;<ESC>
+nnoremap <leader>; A;<ESC>
 map <Space> <leader>
 nnoremap <leader>w :w<CR>
 
