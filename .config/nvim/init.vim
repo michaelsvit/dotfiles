@@ -86,8 +86,15 @@
 	set backspace=indent,eol,start
 	set incsearch
 	set wildmenu
-	set path+=**
+	set wildignorecase
+	set path=.,**
 	set tags=./tags,tags;$HOME
+	set wildignore=*.swp,*.bak
+	set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*
+	set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+	set wildignore+=tags
+	set wildignore+=*.tar.*
+	set wildignore+=*/node_modules/**/*
 
 	if has("nvim")
 		set inccommand=nosplit
@@ -105,6 +112,31 @@
 		  \   'gitbranch': 'fugitive#head'
 		  \ },
 		  \ }
+
+" nnoremap <leader>f :find *
+" nnoremap <leader>s :sfind *
+" nnoremap <leader>v :vert sfind *
+" nnoremap <leader>t :tabfind *
+"
+" nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
+" nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
+" nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
+" nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
+"
+" set wildcharm=<C-z>
+" nnoremap <leader>b :buffer <C-z><S-Tab>
+" nnoremap <leader>B :sbuffer <C-z><S-Tab>
+"
+" nnoremap <leader>j :tjump /
+"
+" augroup VIMRC
+"   autocmd!
+
+"   autocmd BufLeave *.css  normal! mC
+"   autocmd BufLeave *.html normal! mH
+"   autocmd BufLeave *.js   normal! mJ
+"   autocmd BufLeave *.php  normal! mP
+" augroup END
 
 
 " Set gutentags command arguments
@@ -143,6 +175,12 @@ inoremap jk <ESC>A;<ESC>
 nnoremap <leader>; A;<ESC>
 map <Space> <leader>
 nnoremap <leader>w :w<CR>
+nnoremap gb :ls<CR>:b<Space>
+nnoremap <PageUp> :bprevious<CR>
+nnoremap <PageDown> :bnext<CR>
+
+" Action: split line
+nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 
 " Plugin: vim-test
 nnoremap <leader>t :TestNearest<CR>
@@ -196,9 +234,6 @@ nnoremap ]<Space> o<Esc>k
 " Action: Set Python breakpoint
 au FileType python nnoremap <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
 au FileType python nnoremap <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
-
-" Action: Open a vertical terminal split
-nnoremap <leader>vt :vne<CR>:term<CR>
 
 """""" Terminal Mappings """"""
 tnoremap <leader><Esc> <C-\><C-n>
