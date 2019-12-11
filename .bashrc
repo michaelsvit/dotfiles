@@ -12,7 +12,7 @@ fi
 PS1='[\u@\h \W]\$ '
 
 export EDITOR=nvim
-export VISUAL=EDITOR
+export VISUAL=$EDITOR
 export XDG_CONFIG_HOME=~/.config
 
 eval "$(fasd --init auto)"
