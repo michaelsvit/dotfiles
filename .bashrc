@@ -17,3 +17,4 @@ export XDG_CONFIG_HOME=~/.config
 
 eval "$(fasd --init auto)"
 eval "$(thefuck --alias)"
+eval "$(pyenv init -)"
