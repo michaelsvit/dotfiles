@@ -3,7 +3,6 @@
 
 	" Appearance
 	Plug 'lifepillar/vim-solarized8'
-	Plug 'dracula/vim', { 'as': 'dracula' }
 	Plug 'itchyny/lightline.vim'
 
 	" Text objects
