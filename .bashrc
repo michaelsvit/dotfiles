@@ -16,4 +16,4 @@ export VISUAL=$EDITOR
 export XDG_CONFIG_HOME=~/.config
 
 eval "$(fasd --init auto)"
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
