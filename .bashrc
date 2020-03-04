@@ -15,5 +15,11 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 export XDG_CONFIG_HOME=~/.config
 
+if [ "$(uname)" == "Linux" ]; then
+	[ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 eval "$(fasd --init auto)"
 #eval "$(pyenv init -)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

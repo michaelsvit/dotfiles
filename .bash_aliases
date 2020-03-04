@@ -2,10 +2,12 @@ case "$OSTYPE" in
 	linux*)
 		alias ls='ls --color=auto'
 		alias o=xdg-open
+		alias c='xclip -selection clipboard'
 		;;
 	darwin*)
 		alias ls='ls -G'
 		alias o=open
+		alias c=pbcopy
 		;;
 	*)
 		echo "Unsupported OS: $OSTYPE"
