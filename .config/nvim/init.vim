@@ -24,7 +24,7 @@
 	" Navigation
 	Plug 'justinmk/vim-sneak'
 	" Plug 'ludovicchabant/vim-gutentags'
-	Plug '/usr/local/opt/fzf'
+	Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
 	Plug 'junegunn/fzf.vim'
 
 	" Git
@@ -193,7 +193,8 @@ nnoremap <C-g> :Rg<Cr>
 " Action: search word under cursor using ripgrep
 nnoremap <leader>g :silent grep! <cword><CR>
 
-" Action: search file names
+" vim-fzf
+nnoremap <leader><space> :Fzf<CR>
 nnoremap <M-f> :Files<Cr>
 
 " Action: automatically fix file

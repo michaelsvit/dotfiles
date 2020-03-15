@@ -12,10 +12,11 @@ fi
 
 # Setting PATH for Python 3.8
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
-export PATH
+export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
+export GPG_TTY=$(tty)
 
 # update PATH to include personal bin if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 
-export GPG_TTY=$(tty)
+# source blt env if it exists
+[ -f ~/blt/env.sh ] && source ~/blt/env.sh
