@@ -25,6 +25,7 @@
 	Plug 'justinmk/vim-sneak'
 	" Plug 'ludovicchabant/vim-gutentags'
 	Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
+    Plug '/usr/local/opt/fzf'
 	Plug 'junegunn/fzf.vim'
 
 	" Git
@@ -187,15 +188,12 @@ nnoremap <leader>t :TestNearest<CR>
 nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>l :TestLast<CR>
 
-" Action: ripgrep
-nnoremap <C-g> :Rg<Cr>
-
 " Action: search word under cursor using ripgrep
 nnoremap <leader>g :silent grep! <cword><CR>
 
 " vim-fzf
-nnoremap <leader><space> :Fzf<CR>
-nnoremap <M-f> :Files<Cr>
+nnoremap <leader><space> :Files<Cr>
+nnoremap <leader>g :Rg<Cr>
 
 " Action: automatically fix file
 nnoremap <leader>f :CocCommand eslint.executeAutofix<CR>
