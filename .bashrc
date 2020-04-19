@@ -14,6 +14,7 @@ PS1='[\u@\h \W]\$ '
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export XDG_CONFIG_HOME=~/.config
+export HISTSIZE=1000000
 
 if [ "$(uname)" == "Linux" ]; then
 	[ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
