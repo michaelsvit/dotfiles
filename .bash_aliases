@@ -32,6 +32,8 @@ alias shortcuts="nvim $XDG_CONFIG_HOME/sxhkd/sxhkdrc"
 
 # git
 alias gs='git status'
+alias gc='git commit'
+alias gca='git commit --amend'
 alias gcm='git commit -m'
 alias gcan='git commit --amend --no-edit'
 alias gcam='git commit -am'
@@ -39,6 +41,7 @@ alias ga='git add'
 alias gau='git add -u'
 alias gp='git push'
 alias gpu='git push --set-upstream'
+alias gl='git log'
 alias gb='git branch'
 alias gd='git diff'
 alias gh='nohup o $(git config --get remote.origin.url) &> /dev/null &'
