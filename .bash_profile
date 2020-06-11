@@ -17,6 +17,3 @@ export GPG_TTY=$(tty)
 
 # update PATH to include personal bin if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
-
-# source blt env if it exists
-[ -f ~/blt/env.sh ] && source ~/blt/env.sh

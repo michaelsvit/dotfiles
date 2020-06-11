@@ -44,5 +44,6 @@ alias gpu='git push --set-upstream'
 alias gl='git log'
 alias gb='git branch'
 alias gd='git diff'
-alias gh='nohup o $(git config --get remote.origin.url) &> /dev/null &'
-alias pr='hub pull-request'
+
+# work
+alias cdc='source ~/blt/env.sh && cd ~/blt/app/main/core'

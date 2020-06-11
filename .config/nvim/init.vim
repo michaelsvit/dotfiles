@@ -179,6 +179,7 @@ nnoremap <leader>w :w<CR>
 nnoremap gb :ls<CR>:b<Space>
 nnoremap <PageUp> :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
+nnoremap <silent> <leader>yf :let @+=expand("%:p")<CR>
 
 " Action: split line
 nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
