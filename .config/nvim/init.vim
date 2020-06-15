@@ -1,118 +1,119 @@
 " Setup plugins
-	call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
-	" Appearance
-	Plug 'lifepillar/vim-solarized8'
-	Plug 'itchyny/lightline.vim'
+" Appearance
+Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
 
-	" Text objects
-	Plug 'michaeljsmith/vim-indent-object'
-	Plug 'wellle/targets.vim'
-	Plug 'tpope/vim-surround'
+" Text objects
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-surround'
 
-	" Filesystem
-	Plug 'justinmk/vim-dirvish'
-	Plug 'tpope/vim-eunuch'
+" Filesystem
+Plug 'justinmk/vim-dirvish'
+Plug 'tpope/vim-eunuch'
 
-	" Coding
-	Plug 'tpope/vim-commentary'
-	Plug 'janko/vim-test'
+" Coding
+Plug 'tpope/vim-commentary'
+Plug 'janko/vim-test'
 
-	Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-	Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
-	" Navigation
-	Plug 'justinmk/vim-sneak'
-	" Plug 'ludovicchabant/vim-gutentags'
-	Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
-    Plug '/usr/local/opt/fzf'
-	Plug 'junegunn/fzf.vim'
+" Navigation
+Plug 'justinmk/vim-sneak'
+" Plug 'ludovicchabant/vim-gutentags'
+Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
-	" Git
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-	" General
-	Plug 'tpope/vim-repeat'
-	Plug 'junegunn/vim-easy-align'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'ervandew/supertab'
+" General
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-easy-align'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ervandew/supertab'
+Plug 'vimwiki/vimwiki'
 
-	call plug#end()
+call plug#end()
 
 
 " General vim options
-	" Appearance
+" Appearance
 
-	" vim-plug executes these two commands by default:
-	" filetype plugin indent on
-	" syntax enable
+" vim-plug executes these two commands by default:
+" filetype plugin indent on
+" syntax enable
 
-	set termguicolors
-	set background=dark
-	colorscheme solarized8_flat
-	set conceallevel=1
-	set foldmethod=indent
-	set breakindent
-	set breakindentopt=shift:2
-	set showbreak=↳
-	set cursorline
-	set number
-	set relativenumber
-	if !&scrolloff
-	  set scrolloff=1
-	endif
-	if !&sidescrolloff
-	  set sidescrolloff=5
-	endif
+set termguicolors
+set background=dark
+colorscheme solarized8_flat
+set conceallevel=1
+set foldmethod=indent
+set breakindent
+set breakindentopt=shift:2
+set showbreak=↳
+set cursorline
+set number
+set relativenumber
+if !&scrolloff
+    set scrolloff=1
+endif
+if !&sidescrolloff
+    set sidescrolloff=5
+endif
 
-	" Formatting
-	set expandtab
-	set smarttab
-	set shiftwidth=4
-	set tabstop=4
-	set softtabstop=4
-	set autoindent
+" Formatting
+set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set autoindent
 
-	" Buffers
-	set updatetime=100
-	set autoread
-	set hidden
+" Buffers
+set updatetime=100
+set autoread
+set hidden
 
-	" Windows
-	set splitbelow
-	set splitright
+" Windows
+set splitbelow
+set splitright
 
-	" Other
-	set backspace=indent,eol,start
-	set incsearch
-	set wildmenu
-	set wildignorecase
-	set path=.,**
-	set tags=./tags,tags;$HOME
-	set wildignore=*.swp,*.bak
-	set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*
-	set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
-	set wildignore+=tags
-	set wildignore+=*.tar.*
-	set wildignore+=*/node_modules/**/*
+" Other
+set backspace=indent,eol,start
+set incsearch
+set wildmenu
+set wildignorecase
+set path=.,**
+set tags=./tags,tags;$HOME
+set wildignore=*.swp,*.bak
+set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*
+set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=tags
+set wildignore+=*.tar.*
+set wildignore+=*/node_modules/**/*
 
-	if has("nvim")
-		set inccommand=nosplit
-	endif
+if has("nvim")
+    set inccommand=nosplit
+endif
 
 
 " vim-lightline
-	let g:lightline = {
-		  \ 'colorscheme': 'solarized',
-		  \ 'active': {
-		  \   'left': [ [ 'mode', 'paste' ],
-		  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-		  \ },
-		  \ 'component_function': {
-		  \   'gitbranch': 'fugitive#head'
-		  \ },
-		  \ }
+let g:lightline = {
+            \ 'colorscheme': 'solarized',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'fugitive#head'
+            \ },
+            \ }
 
 " nnoremap <leader>f :find *
 " nnoremap <leader>s :sfind *
