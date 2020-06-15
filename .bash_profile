@@ -17,3 +17,8 @@ export GPG_TTY=$(tty)
 
 # update PATH to include personal bin if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+
+# source git-completion when running on MacOS
+if [[ $(uname) = 'Darwin' ]] && [[ -f /usr/local/etc/bash_completion.d/git-completion.bash ]]; then
+    source /usr/local/etc/bash_completion.d/git-completion.bash
+fi

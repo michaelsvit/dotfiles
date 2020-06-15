@@ -20,13 +20,14 @@ alias ll="l -l"
 alias la="ll -a"
 alias grep="grep --color=auto"
 alias journalctl="journalctl -e"
-alias vi=nvim
+alias vi='nvim -u None'
 alias vim=nvim
 alias vf='nvim $(fzf)'
 alias tmux="tmux -u"
 alias cat=bat
 alias find=fd
 alias dbx=dropbox-cli
+alias t='python ~/bin/t/t.py --task-dir ~/tasks --list tasks'
 
 alias shortcuts="nvim $XDG_CONFIG_HOME/sxhkd/sxhkdrc"
 
@@ -44,7 +45,9 @@ alias gpu='git push --set-upstream'
 alias gl='git log'
 alias gb='git branch'
 alias gd='git diff'
+alias gsw='git switch'
 alias hpr='hub pull-request'
 
 # work
 alias cdc='source ~/blt/env.sh && cd ~/blt/app/main/core'
+alias cbo='coremvn -offline -pl'
