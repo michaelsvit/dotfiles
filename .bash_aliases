@@ -20,7 +20,7 @@ alias ll="l -l"
 alias la="ll -a"
 alias grep="grep --color=auto"
 alias journalctl="journalctl -e"
-alias vi='nvim -u None'
+alias vi='nvim -u NONE'
 alias vim=nvim
 alias vf='nvim $(fzf)'
 alias tmux="tmux -u"
@@ -41,7 +41,7 @@ alias gcam='git commit -am'
 alias ga='git add'
 alias gau='git add -u'
 alias gp='git push'
-alias gpu='git push --set-upstream'
+alias gpu='git push --set-upstream origin $(git branch --show-current)'
 alias gl='git log'
 alias gb='git branch'
 alias gd='git diff'
@@ -50,4 +50,5 @@ alias hpr='hub pull-request'
 
 # work
 alias cdc='source ~/blt/env.sh && cd ~/blt/app/main/core'
-alias cbo='coremvn -offline -pl'
+alias cb='coremvn process-classes -pl'
+alias cl='vi ~/blt/app/main/core/sfdc/logs/sfdc/output.log'
