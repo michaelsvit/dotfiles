@@ -1,0 +1,30 @@
+#!/bin/bash
+
+wid=$1
+class=$2
+instance=$3
+consequences=$4
+
+case "$class.$instance" in
+	Google-chrome.*)
+		desktop=^2
+		;;
+	discord.*)
+		desktop=^3
+		;;
+	.)
+		case $(ps -p "$(xdo pid "$wid")" -o comm= 2>/dev/null) in
+			spotify)
+				desktop=^3
+				;;
+		esac
+		;;
+esac
+
+case $(xprop -id "$wid" | grep 'WM_NAME(STRING)' | cut -f3 -d' ' | tr -d '"') in
+	sxhkd_help)
+		state=floating
+		;;
+esac
+
+printf ${desktop:+"desktop=$desktop"} ${state:+"state=$state"}
