@@ -14,7 +14,14 @@ PS1='[\u@\h \W]\$ '
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export XDG_CONFIG_HOME=~/.config
+export HISTSIZE=1000000
+
+if [ "$(uname)" == "Linux" ]; then
+	[ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
 
 eval "$(fasd --init auto)"
-eval "$(thefuck --alias)"
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
