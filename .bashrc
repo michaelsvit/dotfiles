@@ -29,14 +29,14 @@ if [[ -f /home/msvit/.ansible/env.sh ]]; then
 fi
 
 if [[ $(uname) = 'Darwin' ]]; then
-    [[ -f /usr/local/etc/bash_completion.d/git-completion.bash ]] && source /usr/local/etc/bash_completion.d/git-completion.bash
+    safe_source /usr/local/etc/bash_completion.d/git-completion.bash
     export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
 elif [ "$(uname)" == "Linux" ]; then
 	[[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    [[ -f /usr/share/bash-completion/completions/git ]] && source /usr/share/bash-completion/completions/git
+    safe_source /usr/share/bash-completion/completions/git
 fi
 
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
-[[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
+safe_source ~/.bash_aliases
+safe_source ~/.fzf.bash
 
 eval "$(fasd --init auto)"
