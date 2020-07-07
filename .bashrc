@@ -5,9 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
-fi
+[[ -f /usr/share/bash-completion/completions/git ]] && source /usr/share/bash-completion/completions/git
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
 PS1='[\u@\h \W]\$ '
 
@@ -25,3 +24,9 @@ eval "$(fasd --init auto)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+if [ -f /home/msvit/.ansible/env.sh ]; then
+    . /home/msvit/.ansible/env.sh
+    # To disable ansible, comment out, but do not delete the following:
+    activate_ansible
+fi
