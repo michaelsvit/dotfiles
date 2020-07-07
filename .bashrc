@@ -11,6 +11,12 @@ safe_source() {
     fi
 }
 
+append_to_path() {
+    if [[ -n "$1" ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
 PS1='[\u@\h \W]\$ '
 
 export EDITOR=nvim
@@ -19,7 +25,8 @@ export XDG_CONFIG_HOME=~/.config
 export HISTSIZE=1000000
 export GPG_TTY=$(tty)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-export PATH="$HOME/bin:$PATH"
+
+append_to_path ~/bin
 
 if [[ -f /home/msvit/.ansible/env.sh ]]; then
     export ANSIBLE_DONT_CHANGE_PROMPT=1
@@ -30,9 +37,8 @@ fi
 
 if [[ $(uname) = 'Darwin' ]]; then
     safe_source /usr/local/etc/bash_completion.d/git-completion.bash
-    export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
+    append_to_path /Library/Frameworks/Python.framework/Versions/3.8/bin
 elif [ "$(uname)" == "Linux" ]; then
-	[[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     safe_source /usr/share/bash-completion/completions/git
 fi
 
