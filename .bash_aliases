@@ -64,5 +64,5 @@ alias hpr='hub pull-request'
 
 # work
 alias cdc='source ~/blt/env.sh && cd ~/blt/app/main/core'
-alias cb='coremvn process-classes -pl'
+alias cb='coremvn process-classes'
 alias cl='vi ~/blt/app/main/core/sfdc/logs/sfdc/output.log'

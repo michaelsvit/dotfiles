@@ -11,6 +11,12 @@ safe_source() {
     fi
 }
 
+safe_eval() {
+    if [[ -x $(command -v "$1") ]]; then
+        eval "$($@)"
+    fi
+}
+
 append_to_path() {
     if [[ -n "$1" ]]; then
         export PATH="$1:$PATH"
@@ -25,6 +31,7 @@ export XDG_CONFIG_HOME=~/.config
 export HISTSIZE=1000000
 export GPG_TTY=$(tty)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+safe_source ~/.env
 
 append_to_path ~/bin
 
@@ -40,9 +47,10 @@ if [[ $(uname) = 'Darwin' ]]; then
     append_to_path /Library/Frameworks/Python.framework/Versions/3.8/bin
 elif [ "$(uname)" == "Linux" ]; then
     safe_source /usr/share/bash-completion/completions/git
+    safe_eval /home/linuxbrew/.linuxbrew/bin/brew shellenv
 fi
 
 safe_source ~/.bash_aliases
 safe_source ~/.fzf.bash
 
-eval "$(fasd --init auto)"
+safe_eval fasd --init auto
