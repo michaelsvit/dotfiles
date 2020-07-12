@@ -58,6 +58,8 @@ alias gb='git branch'
 __git_complete gb _git_branch
 alias gd='git diff'
 __git_complete gd _git_diff
+alias gdc='git diff --cached'
+__git_complete gdc _git_diff
 alias gsw='git switch'
 __git_complete gsw _git_switch
 alias hpr='hub pull-request'
