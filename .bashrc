@@ -18,7 +18,7 @@ safe_eval() {
 }
 
 append_to_path() {
-    if [[ -n "$1" ]]; then
+    if [[ -d "$1" ]]; then
         export PATH="$1:$PATH"
     fi
 }
@@ -36,7 +36,6 @@ safe_source ~/.env
 append_to_path ~/bin
 
 if [[ -f /home/msvit/.ansible/env.sh ]]; then
-    export ANSIBLE_DONT_CHANGE_PROMPT=1
     . /home/msvit/.ansible/env.sh
     # To disable ansible, comment out, but do not delete the following:
     activate_ansible
