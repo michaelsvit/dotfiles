@@ -66,5 +66,8 @@ alias hpr='hub pull-request'
 
 # work
 alias cdc='source ~/blt/env.sh && cd ~/blt/app/main/core'
-alias cb='coremvn process-classes'
+alias cpb='coremvn process-classes'
+alias crpb='blt --stop && cpb && blt --start-bg'
+alias crb='blt --stop --build --start-bg'
 alias cl='vi ~/blt/app/main/core/sfdc/logs/sfdc/output.log'
+alias import='mvn clean install com.sfdc.maven.plugins:intellij-maven-plugin:1.6.0:import -Dmaven.test.skip=true -Dintellij.root.project=${HOME}/blt/app/main/core/.idea'
