@@ -25,7 +25,6 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'justinmk/vim-sneak'
 " Plug 'ludovicchabant/vim-gutentags'
 Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
-Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Git
