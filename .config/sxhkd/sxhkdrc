@@ -129,13 +129,13 @@ super + {Left,Down,Up,Right}
 #
 
 XF86AudioRaiseVolume
-	pactl set-sink-volume 0 +5%
+	pactl set-sink-volume 'alsa_output.usb-Schiit_Audio_I_m_Fulla_Schiit-00.analog-stereo' +5%
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 0 -5%
+	pactl set-sink-volume 'alsa_output.usb-Schiit_Audio_I_m_Fulla_Schiit-00.analog-stereo' -5%
 
 XF86AudioMute
-	pactl set-sink-mute 0 toggle
+	pactl set-sink-mute 'alsa_output.usb-Schiit_Audio_I_m_Fulla_Schiit-00.analog-stereo' toggle
 
 XF86AudioPlay
 	playerctl --player=spotify play-pause
