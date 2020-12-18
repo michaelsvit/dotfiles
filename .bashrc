@@ -2,12 +2,18 @@
 # ~/.bashrc
 #
 
+safe_source() {
+    if [ -f "$1" ]; then
+        source "$1"
+    fi
+}
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
-fi
+safe_source ~/.fzf.bash
+safe_source /usr/share/git/completion/git-completion.bash
+safe_source ~/.bash_aliases # must be sourced after git-completion
 
 PS1='[\u@\h \W]\$ '
 
@@ -22,6 +28,4 @@ fi
 
 eval "$(fasd --init auto)"
 #eval "$(pyenv init -)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
