@@ -20,12 +20,12 @@ Plug 'janko/vim-test'
 
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'rust-lang/rust.vim'
 
 " Navigation
 Plug 'justinmk/vim-sneak'
 " Plug 'ludovicchabant/vim-gutentags'
 Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
-Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Git

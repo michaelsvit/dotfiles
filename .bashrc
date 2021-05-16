@@ -2,18 +2,26 @@
 # ~/.bashrc
 #
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 safe_source() {
-    if [ -f "$1" ]; then
+    if [[ -f "$1" ]]; then
         source "$1"
     fi
 }
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+safe_eval() {
+    if [[ -x $(command -v "$1") ]]; then
+        eval "$($@)"
+    fi
+}
 
-safe_source ~/.fzf.bash
-safe_source /usr/share/git/completion/git-completion.bash
-safe_source ~/.bash_aliases # must be sourced after git-completion
+append_to_path() {
+    if [[ -d "$1" ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
 
 PS1='[\u@\h \W]\$ '
 
@@ -21,11 +29,28 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 export XDG_CONFIG_HOME=~/.config
 export HISTSIZE=1000000
+export GPG_TTY=$(tty)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+safe_source ~/.env
 
-if [ "$(uname)" == "Linux" ]; then
-	[ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+append_to_path ~/bin
+
+if [[ -f /home/msvit/.ansible/env.sh ]]; then
+    . /home/msvit/.ansible/env.sh
+    # To disable ansible, comment out, but do not delete the following:
+    activate_ansible
 fi
 
-eval "$(fasd --init auto)"
-#eval "$(pyenv init -)"
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+if [[ $(uname) = 'Darwin' ]]; then
+    safe_source /usr/local/etc/bash_completion.d/git-completion.bash
+    append_to_path /Library/Frameworks/Python.framework/Versions/3.8/bin
+elif [ "$(uname)" == "Linux" ]; then
+    safe_source /usr/share/bash-completion/completions/git
+    safe_eval /home/linuxbrew/.linuxbrew/bin/brew shellenv
+fi
+
+safe_source ~/.bash_aliases
+safe_source ~/.fzf.bash
+safe_source "$HOME/.cargo/env"
+
+safe_eval fasd --init auto
