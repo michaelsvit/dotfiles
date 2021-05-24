@@ -191,14 +191,13 @@ nnoremap <leader>T :TestFile<CR>
 nnoremap <leader>l :TestLast<CR>
 
 " Action: search word under cursor using ripgrep
-nnoremap <leader>g :silent grep! <cword><CR>
+nnoremap <leader>qg :silent grep! <cword><CR>
 
 " vim-fzf
-nnoremap <leader><space> :Files<Cr>
+nnoremap <leader><space> :Buffers<Cr>
+nnoremap <leader>f :Files<Cr>
 nnoremap <leader>g :Rg<Cr>
-
-" Action: automatically fix file
-nnoremap <leader>f :CocCommand eslint.executeAutofix<CR>
+nnoremap <leader>h :History<Cr>
 
 " Action: open vimrc in vertical split
 nnoremap <leader>v :vsp $MYVIMRC<CR>
