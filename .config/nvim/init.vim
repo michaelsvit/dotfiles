@@ -15,6 +15,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-eunuch'
 
 " Coding
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-commentary'
 Plug 'janko/vim-test'
 
@@ -23,8 +24,6 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rust-lang/rust.vim'
 
 " Navigation
-Plug 'justinmk/vim-sneak'
-" Plug 'ludovicchabant/vim-gutentags'
 Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -41,19 +40,31 @@ Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
+" Tree-Sitter config
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+ensure_installed = {"rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
+  highlight = {
+    enable = true
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
 
 " General vim options
 " Appearance
 
 " vim-plug executes these two commands by default:
 " filetype plugin indent on
-" syntax enable
 
 set termguicolors
 set background=dark
 colorscheme solarized8_flat
 set conceallevel=1
-set foldmethod=indent
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set breakindent
 set breakindentopt=shift:2
 set showbreak=↳
