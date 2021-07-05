@@ -58,12 +58,3 @@ safe_source ~/.cargo/env
 safe_source ~/.bootstrap_rc
 
 safe_eval fasd --init auto
-
-
-# save tmux shell history
-# avoid duplicates..
-export HISTCONTROL=ignoredups:erasedups
-# append history entries..
-shopt -s histappend
-# After each command, save and reload history
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
