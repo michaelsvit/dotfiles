@@ -43,7 +43,7 @@ call plug#end()
 " Tree-Sitter config
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
+ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
   highlight = {
     enable = true
   },
@@ -56,11 +56,7 @@ EOF
 " General vim options
 " Appearance
 
-" vim-plug executes these two commands by default:
-" filetype plugin indent on
-
 set termguicolors
-set background=dark
 colorscheme solarized8_flat
 set conceallevel=1
 set foldmethod=expr
@@ -84,7 +80,6 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set autoindent
 
 " Buffers
 set updatetime=100
@@ -97,7 +92,6 @@ set splitright
 
 " Other
 set backspace=indent,eol,start
-set incsearch
 set wildmenu
 set wildignorecase
 set path=.,**
