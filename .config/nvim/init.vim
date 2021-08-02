@@ -17,7 +17,7 @@ Plug 'tpope/vim-eunuch'
 " Coding
 Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch': '0.5-compat'}
-Plug 'nvim-treesitter/nvim-treesitter-refactor', {'branch': '0.5-compat'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'tpope/vim-commentary'
 Plug 'janko/vim-test'
 
@@ -37,8 +37,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ervandew/supertab'
 Plug 'vimwiki/vimwiki'
+Plug 'abecodes/tabout.nvim'
 
 call plug#end()
 
