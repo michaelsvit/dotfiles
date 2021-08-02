@@ -1,4 +1,3 @@
-source /home/msvit/.bootstrap_rc
 #
 # ~/.bashrc
 #
