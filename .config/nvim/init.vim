@@ -6,7 +6,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 
 " Text objects
-Plug 'michaeljsmith/vim-indent-object'
+" Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-surround'
 
@@ -18,10 +18,10 @@ Plug 'tpope/vim-eunuch'
 Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch': '0.5-compat'}
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
-Plug 'tpope/vim-commentary'
-Plug 'janko/vim-test'
+Plug 'numToStr/Comment.nvim'
+" Plug 'janko/vim-test'
 
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+" Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rust-lang/rust.vim'
 
@@ -113,6 +113,8 @@ ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript
         }
     }
 }
+
+require('Comment').setup()
 EOF
 
 " General vim options
