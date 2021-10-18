@@ -150,13 +150,13 @@ XF86AudioPrev
 	playerctl --player=spotify previous
 
 alt + XF86AudioPlay
-	playerctl --player=chrome play-pause
+	playerctl --player=chromium play-pause
 
 alt + XF86AudioStop
-	playerctl --player=chrome stop
+	playerctl --player=chromium stop
 
 alt + XF86AudioNext
-	playerctl --player=chrome next
+	playerctl --player=chromium next
 
 alt + XF86AudioPrev
-	playerctl --player=chrome previous
+	playerctl --player=chromium previous

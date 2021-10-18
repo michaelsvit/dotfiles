@@ -6,7 +6,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 
 " Text objects
-Plug 'michaeljsmith/vim-indent-object'
+" Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-surround'
 
@@ -15,11 +15,13 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-eunuch'
 
 " Coding
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'tpope/vim-commentary'
-Plug 'janko/vim-test'
+Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch': '0.5-compat'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'numToStr/Comment.nvim'
+" Plug 'janko/vim-test'
 
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+" Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rust-lang/rust.vim'
 
@@ -35,32 +37,90 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ervandew/supertab'
 Plug 'vimwiki/vimwiki'
+Plug 'abecodes/tabout.nvim'
 
 call plug#end()
 
 " Tree-Sitter config
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
-  highlight = {
-    enable = true
-  },
-  indent = {
-    enable = true
-  }
+ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
+    highlight = { enable = true },
+    indent = { enable = true },
+    refactor = {
+        highlight_definitions = { enable = true },
+        highlight_current_scope = { enable = true },
+        smart_rename = {
+            enable = true,
+            keymaps = {
+                smart_rename = "grr",
+            },
+        },
+        navigation = {
+            enable = true,
+            keymaps = {
+                goto_definition = "gnd",
+                list_definitions = "gnD",
+                list_definitions_toc = "gO",
+                goto_next_usage = "<a-*>",
+                goto_previous_usage = "<a-#>",
+            },
+        },
+    },
+    textobjects = {
+        select = {
+            enable = true,
+
+            -- Automatically jump forward to textobj
+            lookahead = true,
+
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+            }
+        },
+        swap = {
+            enable = true,
+            swap_next = {
+                ["<leader>a"] = "@parameter.inner"
+            },
+            swap_previous = {
+                ["<leader>A"] = "@parameter.inner"
+            }
+        },
+        move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+                ["]m"] = "@function.outer",
+                ["]]"] = "@class.outer",
+            },
+            goto_next_end = {
+                ["]M"] = "@function.outer",
+                ["]["] = "@class.outer",
+            },
+            goto_previous_start = {
+                ["[m"] = "@function.outer",
+                ["[["] = "@class.outer",
+            },
+            goto_previous_end = {
+                ["[M"] = "@function.outer",
+                ["[]"] = "@class.outer",
+            }
+        }
+    }
 }
+
+require('Comment').setup()
 EOF
 
 " General vim options
 " Appearance
 
-" vim-plug executes these two commands by default:
-" filetype plugin indent on
-
 set termguicolors
-set background=dark
 colorscheme solarized8_flat
 set conceallevel=1
 set foldmethod=expr
@@ -84,7 +144,6 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set autoindent
 
 " Buffers
 set updatetime=100
@@ -97,7 +156,6 @@ set splitright
 
 " Other
 set backspace=indent,eol,start
-set incsearch
 set wildmenu
 set wildignorecase
 set path=.,**
