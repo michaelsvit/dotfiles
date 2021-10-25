@@ -45,7 +45,7 @@ call plug#end()
 " Tree-Sitter config
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
+ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash", "dockerfile"} ,
     highlight = { enable = true },
     indent = { enable = true },
     refactor = {

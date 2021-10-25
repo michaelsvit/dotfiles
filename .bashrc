@@ -34,9 +34,6 @@ export GPG_TTY=$(tty)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 safe_source ~/.env
 
-append_to_path ~/bin
-append_to_path /opt/intellij/bin
-
 if [[ -f /home/msvit/.ansible/env.sh ]]; then
     . /home/msvit/.ansible/env.sh
     # To disable ansible, comment out, but do not delete the following:
