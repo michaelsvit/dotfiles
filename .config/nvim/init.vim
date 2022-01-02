@@ -26,7 +26,7 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rust-lang/rust.vim'
 
 " Navigation
-Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Git
@@ -45,7 +45,7 @@ call plug#end()
 " Tree-Sitter config
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
+ensure_installed = {"python", "comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash", "dockerfile"} ,
     highlight = { enable = true },
     indent = { enable = true },
     refactor = {
