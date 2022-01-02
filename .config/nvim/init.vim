@@ -15,8 +15,8 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-eunuch'
 
 " Coding
-Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch': '0.5-compat'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'numToStr/Comment.nvim'
 " Plug 'janko/vim-test'
@@ -45,7 +45,7 @@ call plug#end()
 " Tree-Sitter config
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
+ensure_installed = {"python", "comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash"} ,
     highlight = { enable = true },
     indent = { enable = true },
     refactor = {
@@ -80,6 +80,8 @@ ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript
                 ["if"] = "@function.inner",
                 ["ac"] = "@class.outer",
                 ["ic"] = "@class.inner",
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
             }
         },
         swap = {
@@ -95,19 +97,19 @@ ensure_installed = {"comment", "rust", "go", "gomod", "java", "lua", "javascript
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
-                ["]m"] = "@function.outer",
+                ["]f"] = "@function.outer",
                 ["]]"] = "@class.outer",
             },
             goto_next_end = {
-                ["]M"] = "@function.outer",
+                ["]F"] = "@function.outer",
                 ["]["] = "@class.outer",
             },
             goto_previous_start = {
-                ["[m"] = "@function.outer",
+                ["[f"] = "@function.outer",
                 ["[["] = "@class.outer",
             },
             goto_previous_end = {
-                ["[M"] = "@function.outer",
+                ["[F"] = "@function.outer",
                 ["[]"] = "@class.outer",
             }
         }

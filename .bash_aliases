@@ -15,7 +15,7 @@ esac
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
 alias u='cd ..'
-alias l="ls -h"
+alias l=exa
 alias ll="l -l"
 alias la="ll -a"
 alias grep="grep --color=auto"

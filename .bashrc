@@ -56,4 +56,4 @@ safe_source ~/.fzf.bash
 safe_source ~/.cargo/env
 safe_source ~/.bootstrap_rc
 
-safe_eval fasd --init auto
+safe_eval zoxide init bash
