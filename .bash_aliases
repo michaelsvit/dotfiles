@@ -13,7 +13,7 @@ case "$OSTYPE" in
 		echo "Unsupported OS: $OSTYPE"
 esac
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias u='cd ..'
 alias l=exa
 alias ll="l -l"

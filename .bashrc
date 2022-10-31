@@ -33,19 +33,12 @@ export GPG_TTY=$(tty)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 safe_source ~/.env
 
-if [[ -f /home/msvit/.ansible/env.sh ]]; then
-    . /home/msvit/.ansible/env.sh
-    # To disable ansible, comment out, but do not delete the following:
-    activate_ansible
-    safe_source ~/.p4env
-fi
-
 if [[ $(uname) = 'Darwin' ]]; then
     safe_source /usr/local/etc/bash_completion.d/git-completion.bash
-    append_to_path /Library/Frameworks/Python.framework/Versions/3.8/bin
 elif [ "$(uname)" == "Linux" ]; then
+    append_to_path "$HOME/homebrew/bin"
     safe_source /usr/share/bash-completion/completions/git
-    safe_eval /home/linuxbrew/.linuxbrew/bin/brew shellenv
+    safe_eval "$(brew --prefix)"/bin/brew shellenv
 fi
 
 safe_source ~/.bash_aliases
