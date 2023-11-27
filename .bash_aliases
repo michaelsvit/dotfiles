@@ -13,6 +13,13 @@ case "$OSTYPE" in
 		echo "Unsupported OS: $OSTYPE"
 esac
 
+save () {
+    local cmd="$(fc -lnr -11 -2 | awk '{$1=$1};1' | fzf)"
+    [[ -z "$cmd" ]] && return
+    echo "alias $1='$cmd'" >> ~/.logbook
+    source ~/.logbook
+}
+
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias u='cd ..'
 alias l=exa
@@ -23,11 +30,9 @@ alias journalctl="journalctl -e"
 alias vi='nvim -u NONE'
 alias vim=nvim
 alias vf='nvim $(fzf)'
-alias tmux="tmux -u"
 alias cat=bat
 alias find=fd
 alias dbx=dropbox-cli
-alias t='python ~/bin/t/t.py --task-dir ~/tasks --list tasks'
 
 alias shortcuts="nvim $XDG_CONFIG_HOME/sxhkd/sxhkdrc"
 
@@ -62,26 +67,6 @@ alias gdc='git diff --cached'
 __git_complete gdc _git_diff
 alias gsw='git switch'
 __git_complete gsw _git_switch
-alias hpr='hub pull-request'
-gff () {
-    git show-ref --quiet refs/heads/$1 || return 1
-    git merge --ff-only $(git merge-base origin/perforce "$1")
-}
 
 # work
-alias cc='corecli'
-alias ccb='corecli core:build'
-alias ck='corecli core:stop'
-alias cs='corecli core:start -b'
-alias cks='corecli core:stop core:start -b'
-alias clo='vi ~/gimlet/app/main/core/sfdc/logs/sfdc/output.log'
-alias cls='vi ~/gimlet/app/main/core/sfdc/logs/sfdc/suppressed.log'
-alias clst='vi ~/gimlet/app/main/core/sfdc/logs/sfdc/startup.log'
-alias clf='vim ~/.corecli.logs/fail'
-alias import='mvn clean install com.sfdc.maven.plugins:intellij-maven-plugin:1.6.0:import -Dmaven.test.skip=true -Dintellij.root.project=${HOME}/blt/app/main/core/.idea'
-alias p4v='corecli --p4v'
-alias ij='corecli ide:intellij'
-alias precheckin='corecli core:submit -c'
-alias rtp='corecli crst:submit --crtool ccollab -c'
-alias eslint='corecli mvn:mvn -- -U tools:eslint-lwc'
-alias bazel='corecli --monitor-off bazel:bazel --'
+source ~/.bash_aliases_work

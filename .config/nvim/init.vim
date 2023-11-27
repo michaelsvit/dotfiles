@@ -19,33 +19,31 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'numToStr/Comment.nvim'
-" Plug 'janko/vim-test'
-
-" Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'rust-lang/rust.vim'
+" Plug 'neovim/nvim-lspconfig' // plugin that sets up lsp servers
 
 " Navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Plug 'SmiteshP/nvim-navbuddy' // requires lsp
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'sindrets/diffview.nvim'
 
 " General
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'jiangmiao/auto-pairs'
-Plug 'vimwiki/vimwiki'
 Plug 'abecodes/tabout.nvim'
+Plug 'mickael-menu/zk-nvim'
 
 call plug#end()
 
 " Tree-Sitter config
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash", "dockerfile"} ,
+ensure_installed = {"python", "comment", "rust", "go", "gomod", "java", "lua", "javascript", "toml", "yaml", "json", "bash", "dockerfile", "c_sharp", "proto"} ,
     highlight = { enable = true },
     indent = { enable = true },
     refactor = {
@@ -117,6 +115,9 @@ ensure_installed = {"python", "comment", "rust", "go", "gomod", "java", "lua", "
 }
 
 require('Comment').setup()
+require('zk').setup({
+    picker = "fzf"
+})
 EOF
 
 " General vim options
@@ -133,16 +134,10 @@ set showbreak=↳
 set cursorline
 set number
 set relativenumber
-if !&scrolloff
-    set scrolloff=1
-endif
-if !&sidescrolloff
-    set sidescrolloff=5
-endif
+set scrolloff=1
 
 " Formatting
 set expandtab
-set smarttab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -157,22 +152,8 @@ set splitbelow
 set splitright
 
 " Other
-set backspace=indent,eol,start
 set wildmenu
 set wildignorecase
-set path=.,**
-set tags=./tags,tags;$HOME
-set wildignore=*.swp,*.bak
-set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*
-set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
-set wildignore+=tags
-set wildignore+=*.tar.*
-set wildignore+=*/node_modules/**/*
-
-if has("nvim")
-    set inccommand=nosplit
-endif
-
 
 " vim-lightline
 let g:lightline = {
@@ -185,63 +166,6 @@ let g:lightline = {
             \   'gitbranch': 'fugitive#head'
             \ },
             \ }
-
-" nnoremap <leader>f :find *
-" nnoremap <leader>s :sfind *
-" nnoremap <leader>v :vert sfind *
-" nnoremap <leader>t :tabfind *
-"
-" nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
-" nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
-" nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
-" nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
-"
-" set wildcharm=<C-z>
-" nnoremap <leader>b :buffer <C-z><S-Tab>
-" nnoremap <leader>B :sbuffer <C-z><S-Tab>
-"
-" nnoremap <leader>j :tjump /
-"
-" augroup VIMRC
-"   autocmd!
-
-"   autocmd BufLeave *.css  normal! mC
-"   autocmd BufLeave *.html normal! mH
-"   autocmd BufLeave *.js   normal! mJ
-"   autocmd BufLeave *.php  normal! mP
-" augroup END
-
-
-" Set gutentags command arguments
-" au FileType c++ let g:gutentags_ctags_extra_args = ['--c++-kinds=+p','--fields=+iaS','--extras=+q']
-
-" Set tab key to expand snippets
-" let g:UltiSnipsExpandTrigger="<leader><tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-k>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-" let g:UltiSnipsEditSplit="vertical"
-
-" Set tab key to traverse list from top to bottom
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" Setup vim-javascript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
-" let g:javascript_conceal_noarg_arrow_function = "🞅"
-" let g:javascript_conceal_underscore_arrow_function = "🞅"
-
-" vim-test
-let test#strategy = "neovim"
-let g:test#javascript#ava#file_pattern = '\v.*\.(test|spec).(js|jsx|coffee)$'
 
 inoremap jj <ESC>
 inoremap jk <ESC>A;<ESC>
@@ -302,10 +226,6 @@ nnoremap ]b :bn<CR>
 nnoremap [<Space> O<Esc>j
 nnoremap ]<Space> o<Esc>k
 
-" Action: Set Python breakpoint
-au FileType python nnoremap <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
-au FileType python nnoremap <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
-
 """""" Terminal Mappings """"""
 tnoremap <leader><Esc> <C-\><C-n>
 
@@ -314,3 +234,6 @@ autocmd CursorHold,CursorHoldI * silent! checktime
 
 " Equalize splits when vim is resized
 autocmd VimResized * wincmd =
+
+" Filetype-specific configuration
+autocmd FileType proto setlocal shiftwidth=2 tabstop=2

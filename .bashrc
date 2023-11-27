@@ -31,7 +31,6 @@ export XDG_CONFIG_HOME=~/.config
 export HISTSIZE=1000000
 export GPG_TTY=$(tty)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-safe_source ~/.env
 
 if [[ $(uname) = 'Darwin' ]]; then
     safe_source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -41,9 +40,12 @@ elif [ "$(uname)" == "Linux" ]; then
     safe_eval "$(brew --prefix)"/bin/brew shellenv
 fi
 
+safe_source ~/.env
 safe_source ~/.bash_aliases
+safe_source ~/.logbook
 safe_source ~/.fzf.bash
 safe_source ~/.cargo/env
 safe_source ~/.bootstrap_rc
+safe_source ~/.kubeme.sh
 
 safe_eval zoxide init bash
